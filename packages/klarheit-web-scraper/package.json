@@ -1,0 +1,14 @@
+{
+  "name": "klarheit-scraper-client",
+  "version": "0.0.0",
+  "description": "Klarheit Scraper client runs in the browser scraping the information expressed by a semantinc structure in the form of a Javascript object.",
+  "main": "klarheit-scraper.ts",
+  "repository": "git@github.com:prdxs/klarheit-scraper-client.git",
+  "author": "Rubén Fernández <rub.fndz@gmail.com>",
+  "license": "GPL-3.0-or-later",
+  "private": true,
+  "devDependencies": {
+    "tslint": "^5.11.0",
+    "typescript": "^3.0.1"
+  }
+}

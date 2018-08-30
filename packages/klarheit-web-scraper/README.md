@@ -253,14 +253,16 @@ const extractionResult = [
 
 ## Versioning
 
-[SemVer](http://semver.org/) is used for versioning. For the versions available, see the [tags on this repository](https://github.com/prdxs/klarheit-scraper-client/tags). 
+[SemVer](http://semver.org/) is used for versioning. For the versions available,
+see the
+[tags on this repository](https://github.com/prdxs/klarheit-scraper-client/tags). 
 
 ## Authors
 
-* **Rubén Fernández** - *Initial work* - [prdxs](https://github.com/prdxs)
+* **prdxs (Rubén Fernández)** - *Initial work* - [prdxs](https://github.com/prdxs)
 
 See also the list of [contributors](https://github.com/prdxs/klarheit-scraper-client/contributors) who participated in this project.
 
 ## License
 
-This project is licensed under the GNU General Public License v3.0 - see the [LICENSE.md](LICENSE.md) file for details
+This project is licensed under the GNU General Public License v3.0 - see the [LICENSE](LICENSE) file for details

@@ -1,8 +1,9 @@
 import { CSSSelector } from './css-selector';
+import { ObjectExtractionQueryDescriptor } from './object-extraction-query-descriptor';
 import { SelectionType } from './selection-type';
-import { ExtractionQueryDescriptor } from './extraction-query-descriptor';
 
 export interface ObjectExtractionQuery {
-  selector?: CSSSelector | [ CSSSelector, SelectionType.Single ];
-  query: ExtractionQueryDescriptor;
+  selector?: CSSSelector;
+  type?: SelectionType.Single;
+  query: ObjectExtractionQueryDescriptor;
 }

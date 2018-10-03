@@ -1,4 +1,9 @@
+import { AttributeExtractionQueryDescriptor } from './attribute-extraction-query-descriptor';
 import { CSSSelector } from './css-selector';
-import { AttributeName } from './attribute-name';
+import { SelectionType } from './selection-type';
 
-export type AttributeExtractionQuery = CSSSelector | [ CSSSelector, AttributeName ];
+export interface AttributeExtractionQuery {
+  selector?: CSSSelector;
+  type?: SelectionType.Single;
+  query?: AttributeExtractionQueryDescriptor;
+}

@@ -1,4 +1,4 @@
-import { selectorResolver } from '../resolvers/selector-resolver';
+import { selectionTypeResolver} from '../resolvers/selection-type-resolver';
 import {
   ArrayExtractionQuery,
   ExtractionQuery,
@@ -25,20 +25,15 @@ export class Extractor {
 
   private selectExtractor() {
     // TODO use typescript validators
-    const { rootNode, extractionQuery } = this;
+    const { rootNode } = this;
+    const extractionQuery = this.extractionQuery = selectionTypeResolver(this.extractionQuery);
 
-    if (typeof extractionQuery === 'string' || Array.isArray(extractionQuery)) {
+    if (extractionQuery.type === SelectionType.Multiple) {
+      this.selectedExtractor = new ArrayExtractor(rootNode, extractionQuery);
+    } else if (isObject(extractionQuery.query)) {
+      this.selectedExtractor = new ObjectExtractor(rootNode, extractionQuery);
+    } else {
       this.selectedExtractor = new AttributeExtractor(rootNode, extractionQuery);
-    } else if (isObject(extractionQuery)) {
-      const [ cssSelector, selectionType ] = selectorResolver(extractionQuery.selector);
-
-      extractionQuery.selector = cssSelector;
-
-      if (selectionType === SelectionType.Single) {
-        this.selectedExtractor = new ObjectExtractor(rootNode, extractionQuery as ObjectExtractionQuery);
-      } else if (selectionType === SelectionType.Multiple) {
-        this.selectedExtractor = new ArrayExtractor(rootNode, extractionQuery as ArrayExtractionQuery);
-      }
     }
   }
 }

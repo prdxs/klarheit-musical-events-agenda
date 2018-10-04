@@ -1,1 +1,1 @@
-export * from './selector-resolver';
+export * from './selection-type-resolver';

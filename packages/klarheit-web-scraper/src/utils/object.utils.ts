@@ -11,5 +11,5 @@ export const cloner = (object: object, options: ClonerOptions = {}) => {
 export const isObject = (object: any): object is object =>
   Object.prototype.toString.call(object) === '[object Object]';
 
-export const isObjectEmpty = (object: object) =>
+export const isObjectEmpty = (object: any) =>
   isObject(object) && Object.keys(object).length === 0;

@@ -7,7 +7,7 @@ export class ObjectExtractor implements Extractor {
   private static filterEmptyEntries(extractionResult: ExtractionResult): ExtractionResult {
     return Object.entries(extractionResult).reduce((filteredExtractionResult, [ key, value ]) => {
       const isEmptyString = typeof value === 'string' && value.length === 0;
-      const isEmptyObject = isObjectEmpty(value as object);
+      const isEmptyObject = isObjectEmpty(value);
       if (isEmptyString || isEmptyObject) {
         return filteredExtractionResult;
       }

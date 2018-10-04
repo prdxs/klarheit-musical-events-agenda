@@ -1,8 +1,8 @@
-import { CSSSelector, ExtractionResult, ObjectExtractionQuery } from '../types';
+import { CSSSelector, ExtractionResult, Extractor, ObjectExtractionQuery } from '../types';
 import { isObjectEmpty, qsFrom } from '../utils';
-import { Extractor } from './extractor';
+import { GeneralExtractor } from './general-extractor';
 
-export class ObjectExtractor {
+export class ObjectExtractor implements Extractor {
 
   private static filterEmptyEntries(extractionResult: ExtractionResult): ExtractionResult {
     return Object.entries(extractionResult).reduce((filteredExtractionResult, [ key, value ]) => {
@@ -23,7 +23,7 @@ export class ObjectExtractor {
     const { selector, query } = extractionQuery;
     const node = selector ? qsFrom(rootNode)(selector as CSSSelector) : rootNode;
     const extractionResult = Object.entries(query).reduce((extraction, [key, innerExtractionQuery]): object => {
-      const extractor = new Extractor(node, innerExtractionQuery);
+      const extractor = new GeneralExtractor(node, innerExtractionQuery);
       return Object.assign(extraction, { [key]: extractor.extract() });
     }, {});
 

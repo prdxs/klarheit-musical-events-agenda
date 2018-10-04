@@ -1,8 +1,13 @@
-import { ArrayExtractionQuery, AttributeExtractionQuery, ExtractionResult, ObjectExtractionQuery } from '../types';
-import { isObjectEmpty, qsaFrom  } from '../utils';
-import { Extractor } from './extractor';
+import {
+  ArrayExtractionQuery,
+  AttributeExtractionQuery,
+  ExtractionResult,
+  Extractor,
+  ObjectExtractionQuery } from '../types';
+import { isObjectEmpty, qsaFrom } from '../utils';
+import { GeneralExtractor } from './general-extractor';
 
-export class ArrayExtractor {
+export class ArrayExtractor implements Extractor {
 
   private static filterEmptyEntries(extractionResult: ExtractionResult): ExtractionResult {
     return (extractionResult as any[]).filter((extractionResultEntry) => {
@@ -21,7 +26,7 @@ export class ArrayExtractor {
     const { selector, query } = extractionQuery;
     const nodes = qsaFrom(rootNode)(selector);
     const extractionResult = nodes.reduce((extraction: ExtractionResult, node: HTMLElement): ExtractionResult => {
-      const extractor = new Extractor(node, { query } as AttributeExtractionQuery | ObjectExtractionQuery);
+      const extractor = new GeneralExtractor(node, { query } as AttributeExtractionQuery | ObjectExtractionQuery);
       return (extraction as any[]).concat(extractor.extract() as any) as ExtractionResult;
     }, []);
 

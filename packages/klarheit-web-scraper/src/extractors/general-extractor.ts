@@ -1,9 +1,8 @@
 import { selectionTypeResolver} from '../resolvers/selection-type-resolver';
 import {
-  ArrayExtractionQuery,
   ExtractionQuery,
   ExtractionResult,
-  ObjectExtractionQuery,
+  Extractor,
   SelectionType
 } from '../types';
 import { isObject } from '../utils';
@@ -11,7 +10,7 @@ import { ArrayExtractor } from './array-extractor';
 import { AttributeExtractor } from './attribute-extractor';
 import { ObjectExtractor } from './object-extractor';
 
-export class Extractor {
+export class GeneralExtractor implements Extractor {
 
   private selectedExtractor: AttributeExtractor | ObjectExtractor | ArrayExtractor;
 
@@ -24,7 +23,6 @@ export class Extractor {
   }
 
   private selectExtractor() {
-    // TODO use typescript validators
     const { rootNode } = this;
     const extractionQuery = this.extractionQuery = selectionTypeResolver(this.extractionQuery);
 

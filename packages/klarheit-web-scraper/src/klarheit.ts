@@ -1,17 +1,13 @@
-import { Extractor } from './extractors';
-import { ExtractionQuery, ExtractionResult } from './types';
+import { GeneralExtractor } from './extractors';
+import { ExtractionQuery, ExtractionResult, Extractor } from './types';
 
-export default class Klarheit {
+export default class Klarheit implements Extractor {
 
-  public extractionResult: ExtractionResult = null;
-
-  constructor(private extractionQuery: ExtractionQuery) { }
+  constructor(private rootNode: Document | HTMLElement = document, private extractionQuery: ExtractionQuery) { }
 
   public extract(): ExtractionResult {
-    const extractor = new Extractor(document, this.extractionQuery);
+    const extractor = new GeneralExtractor(document, this.extractionQuery);
     const extractionResult = extractor.extract();
-
-    this.extractionResult = extractionResult;
 
     return extractionResult;
   }

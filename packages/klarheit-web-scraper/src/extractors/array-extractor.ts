@@ -1,3 +1,4 @@
+import Klarheit from '../klarheit';
 import {
   ArrayExtractionQuery,
   AttributeExtractionQuery,
@@ -5,7 +6,6 @@ import {
   Extractor,
   ObjectExtractionQuery } from '../types';
 import { isObjectEmpty, qsaFrom } from '../utils';
-import { GeneralExtractor } from './general-extractor';
 
 export class ArrayExtractor implements Extractor {
 
@@ -26,7 +26,7 @@ export class ArrayExtractor implements Extractor {
     const { selector, query } = extractionQuery;
     const nodes = qsaFrom(rootNode)(selector);
     const extractionResult = nodes.reduce((extraction: ExtractionResult, node: HTMLElement): ExtractionResult => {
-      const extractor = new GeneralExtractor(node, { query } as AttributeExtractionQuery | ObjectExtractionQuery);
+      const extractor = new Klarheit(node, { query } as AttributeExtractionQuery | ObjectExtractionQuery);
       return (extraction as any[]).concat(extractor.extract() as any) as ExtractionResult;
     }, []);
 

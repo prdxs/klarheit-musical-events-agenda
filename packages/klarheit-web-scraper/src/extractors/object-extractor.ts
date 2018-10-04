@@ -1,6 +1,6 @@
+import Klarheit from '../klarheit';
 import { CSSSelector, ExtractionResult, Extractor, ObjectExtractionQuery } from '../types';
 import { isObjectEmpty, qsFrom } from '../utils';
-import { GeneralExtractor } from './general-extractor';
 
 export class ObjectExtractor implements Extractor {
 
@@ -23,7 +23,7 @@ export class ObjectExtractor implements Extractor {
     const { selector, query } = extractionQuery;
     const node = selector ? qsFrom(rootNode)(selector as CSSSelector) : rootNode;
     const extractionResult = Object.entries(query).reduce((extraction, [key, innerExtractionQuery]): object => {
-      const extractor = new GeneralExtractor(node, innerExtractionQuery);
+      const extractor = new Klarheit(node, innerExtractionQuery);
       return Object.assign(extraction, { [key]: extractor.extract() });
     }, {});
 

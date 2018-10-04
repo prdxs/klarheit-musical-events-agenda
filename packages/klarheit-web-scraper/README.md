@@ -280,11 +280,11 @@ interface ArrayExtractionQuery {
 
 The extractor in charge of extracting these queries is called `ArrayExtractor`
 and it serves as a previous step to object extraction queries or attribute
-extraction queries. It calls to the `GeneralExtractor` for each one of those
+extraction queries. It creates a new `Klarheit` instance for each one of those
 nodes selected by the provided CSS selector regardless of the type of query
-descriptor provided. On each call `GeneralExtractor` is in charge of selecting
-the extractor that will do the work whether it is `AttributeExtractor` or
-`ObjectExtractor`.
+descriptor provided. Afterthat, each one of those `Klarheit` instances are in
+charge of selecting the extractor that will do the work whether it is
+`AttributeExtractor` or `ObjectExtractor`.
 
 An example could be
 

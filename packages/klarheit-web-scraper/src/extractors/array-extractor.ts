@@ -1,4 +1,4 @@
-import Klarheit from '../klarheit';
+import Mole from '..';
 import {
   ArrayExtractionQuery,
   AttributeExtractionQuery,
@@ -26,7 +26,7 @@ export class ArrayExtractor implements Extractor {
     const { selector, query } = extractionQuery;
     const nodes = qsaFrom(rootNode)(selector);
     const extractionResult = nodes.reduce((extraction: ExtractionResult, node: HTMLElement): ExtractionResult => {
-      const extractor = new Klarheit(node, { query } as AttributeExtractionQuery | ObjectExtractionQuery);
+      const extractor = new Mole(node, { query } as AttributeExtractionQuery | ObjectExtractionQuery);
       return (extraction as any[]).concat(extractor.extract() as any) as ExtractionResult;
     }, []);
 

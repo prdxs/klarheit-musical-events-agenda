@@ -8,7 +8,7 @@ import {
 } from './types';
 import { isObject } from './utils';
 
-export default class Klarheit implements Extractor {
+export default class Mole implements Extractor {
 
   private selectedExtractor: AttributeExtractor | ObjectExtractor | ArrayExtractor;
 

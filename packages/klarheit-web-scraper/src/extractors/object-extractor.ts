@@ -1,4 +1,4 @@
-import Klarheit from '../klarheit';
+import Mole from '..';
 import { CSSSelector, ExtractionResult, Extractor, ObjectExtractionQuery } from '../types';
 import { isObjectEmpty, qsFrom } from '../utils';
 
@@ -23,7 +23,7 @@ export class ObjectExtractor implements Extractor {
     const { selector, query } = extractionQuery;
     const node = selector ? qsFrom(rootNode)(selector as CSSSelector) : rootNode;
     const extractionResult = Object.entries(query).reduce((extraction, [key, innerExtractionQuery]): object => {
-      const extractor = new Klarheit(node, innerExtractionQuery);
+      const extractor = new Mole(node, innerExtractionQuery);
       return Object.assign(extraction, { [key]: extractor.extract() });
     }, {});
 

@@ -1,6 +1,6 @@
-# Klarheit scraper (client)
+# Mole web scraper
 
-Klarheit scraper for the browser is a standalone library designed thinking about
+Mole web scraper for the browser is a standalone library designed thinking about
 general-purpose web scraping. It uses a flexible data structure as an input that
 determines what information must be extracted from the web page. 
 
@@ -130,7 +130,7 @@ const extractionQuery = {
 
 The returned result would be the first title found in the web page
 ```javascript
-const extractionResult = new Klarheit(document, extractionQuery).extract();
+const extractionResult = new Mole(document, extractionQuery).extract();
 // Result: 'Title 1'
 ```
 
@@ -199,7 +199,7 @@ The returned result would be the first title and subtitle from the first entry
 with the custom `alt` attribute for the subtitle
 
 ```javascript
-const extractionResult = new Klarheit(document, extractionQuery).extract();
+const extractionResult = new Mole(document, extractionQuery).extract();
 /* Result:
 {
   title: 'Title 1',
@@ -249,7 +249,7 @@ In this case the result will include a `content` key containing both
 `price` and `link` key/values
 
 ```javascript
-const extractionResult = new Klarheit(document, extractionQuery).extract();
+const extractionResult = new Mole(document, extractionQuery).extract();
 /* Result:
 {
   title: 'Title 1',
@@ -280,9 +280,9 @@ interface ArrayExtractionQuery {
 
 The extractor in charge of extracting these queries is called `ArrayExtractor`
 and it serves as a previous step to object extraction queries or attribute
-extraction queries. It creates a new `Klarheit` instance for each one of those
+extraction queries. It creates a new `Mole` instance for each one of those
 nodes selected by the provided CSS selector regardless of the type of query
-descriptor provided. Afterthat, each one of those `Klarheit` instances are in
+descriptor provided. Afterthat, each one of those `Mole` instances are in
 charge of selecting the extractor that will do the work whether it is
 `AttributeExtractor` or `ObjectExtractor`.
 
@@ -310,7 +310,7 @@ const extractionQuery = {
 The returned result would be the first title and subtitle from all the entries
 
 ```javascript
-const extractionResult = new Klarheit(document, extractionQuery).extract();
+const extractionResult = new Mole(document, extractionQuery).extract();
 /* Result:
 [
   {
@@ -334,13 +334,13 @@ const extractionResult = new Klarheit(document, extractionQuery).extract();
 
 [SemVer](http://semver.org/) is used for versioning. For the versions available,
 see the
-[tags on this repository](https://github.com/prdxs/klarheit-scraper-client/tags). 
+[tags on this repository](https://github.com/prdxs/mole-web-scraper/tags). 
 
 ## Authors
 
 * **prdxs (Rubén Fernández)** - *Initial work* - [prdxs](https://github.com/prdxs)
 
-See also the list of [contributors](https://github.com/prdxs/klarheit-scraper-client/contributors) who participated in this project.
+See also the list of [contributors](https://github.com/prdxs/mole-web-scraper/contributors) who participated in this project.
 
 ## License
 

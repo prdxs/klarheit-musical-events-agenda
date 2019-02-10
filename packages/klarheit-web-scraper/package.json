@@ -6,16 +6,18 @@
   "author": "Rubén Fernández <rub.fndz@gmail.com>",
   "license": "GPL-3.0-or-later",
   "scripts": {
-    "build": "webpack",
-    "watch": "webpack -w"
+    "build": "rimraf dist && webpack --config webpack.prod.js",
+    "watch": "rimraf dist && webpack --config webpack.dev.js -w"
   },
   "devDependencies": {
+    "rimraf": "^2.6.3",
     "ts-loader": "^4.5.0",
     "tslint": "^5.12.1",
     "typescript": "^3.3.3",
     "webpack": "^4.29.3",
     "webpack-cli": "^3.2.3",
-    "webpack-dev-server": "^3.1.14"
+    "webpack-dev-server": "^3.1.14",
+    "webpack-merge": "^4.2.1"
   },
   "dependencies": {}
 }

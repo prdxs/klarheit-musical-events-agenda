@@ -2,9 +2,13 @@ const merge = require('webpack-merge');
 const common = require('./webpack.common');
 
 module.exports = merge(common, {
-  devtool: 'inline-source-map',
   mode: 'development',
   output: {
-    filename: '[name].js'
+    filename: '[name].js',
+    publicPath: '/'
+  },
+  devtool: 'inline-source-map',
+  devServer: {
+    contentBase: './dist'
   }
 });

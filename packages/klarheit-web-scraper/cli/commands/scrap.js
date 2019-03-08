@@ -22,16 +22,15 @@ module.exports = async args => {
     await page.goto(url);
     await page.addScriptTag({ path: 'dist/mole.js' });
 
-    const result = await page.evaluate(extractionQuery => {
+    const result = await page.evaluate((extractionQuery, environment) => {
         const extractionResults = new Mole(document, extractionQuery).extract();
 
         if (environment === 'development') {
             console.log(extractionResults);
-            await browser.close();
         }
 
         return extractionResults;
-    }, require(query));
+    }, require(query), environment);
 
     console.log(result);
 

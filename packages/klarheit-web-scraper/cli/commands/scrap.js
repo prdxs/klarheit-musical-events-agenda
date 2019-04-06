@@ -26,6 +26,7 @@ module.exports = async args => {
         const extractionResults = new Mole(document, extractionQuery).extract();
 
         if (environment === 'development') {
+            window.extractionQuery = extractionQuery;
             console.log(extractionResults);
         }
 

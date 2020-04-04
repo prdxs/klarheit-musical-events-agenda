@@ -13,7 +13,7 @@
     "watch": "rimraf dist && webpack --config webpack.dev.js -w"
   },
   "devDependencies": {
-    "minimist": "^1.2.0",
+    "minimist": "^1.2.3",
     "puppeteer": "^1.12.2",
     "rimraf": "^2.6.3",
     "ts-loader": "^4.5.0",
